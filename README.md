@@ -22,6 +22,13 @@ sudo rmmod nvidia
 
 sudo lsof /dev/nvidia*
 
+sudo systemctl edit ollama
+
+# add the following lines:
+[Service]
+Environment="CUDA_VISIBLE_DEVICES=-1"
+# Environment="OLLAMA_HOST=0.0.0.0:11434"
+
 sudo systemctl start ollama
 ```
 ### Enable Nvidia GPUs
