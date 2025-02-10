@@ -13,13 +13,6 @@ Bash scripts to stop nvidia services and unload nvidia kernel modules
 ```bash
 sudo systemctl stop ollama
 
-sudo systemctl stop nvidia-persistenced
-
-sudo rmmod nvidia_uvm
-sudo rmmod nvidia_drm
-sudo rmmod nvidia_modeset
-sudo rmmod nvidia
-
 sudo lsof /dev/nvidia*
 
 sudo systemctl edit ollama
@@ -30,15 +23,6 @@ Environment="CUDA_VISIBLE_DEVICES=-1"
 # Environment="OLLAMA_HOST=0.0.0.0:11434"
 
 sudo systemctl start ollama
-```
-### Enable Nvidia GPUs
-```bash
-sudo modprobe nvidia
-sudo modprobe nvidia_uvm
-sudo modprobe nvidia_drm
-sudo modprobe nvidia_modeset
-
-sudo systemctl start nvidia-persistenced
 ```
 
 ## Model Selection
