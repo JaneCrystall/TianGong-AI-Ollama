@@ -24,6 +24,16 @@ Environment="CUDA_VISIBLE_DEVICES=-1"
 
 sudo systemctl start ollama
 ```
+## Authentication (optional)
+```bash
+sudo apt update
+sudo apt install nginx
+
+# sudo cp nginx/default /etc/nginx/sites-enabled/default
+sudo systemctl restart nginx
+
+curl -H "X-API-Key: your_api_key_here" http://localhost/ollama
+```
 
 ## Model Selection
 ```bash
