@@ -51,3 +51,24 @@ ollama run qwen2.5:72b-instruct-q8_0
 ollama run deepseek-r1:671b-q8_0
 ollama run deepseek-v3:671b-q8_0
 ```
+
+## UI (optional)
+
+Setup `venv`:
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+```
+
+Install requirements:
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -r requirements.txt --upgrade
+
+# pip freeze > requirements_freeze.txt
+
+open-webui serve
+```
