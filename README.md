@@ -34,7 +34,7 @@ sudo apt install nginx
 
 sudo systemctl restart nginx
 
-curl -H "X-API-Key: your_api_key_here" http://localhost/ollama
+curl -H "Authorization: Bearer your_api_key_here" http://localhost/
 ```
 
 ## Model Selection
