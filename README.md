@@ -84,3 +84,9 @@ pip install -r requirements.txt --upgrade
 
 open-webui serve
 ```
+
+##  Monitoring:
+
+```bash
+watch -n 1 nvidia-smi
+```
