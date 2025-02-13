@@ -1,31 +1,17 @@
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-	root /var/www/html;
+    root /var/www/html;
 
-	# Add index.php to the list if you are using PHP
-	index index.html index.htm index.nginx-debian.html;
+    index index.html index.htm index.nginx-debian.html;
 
-	server_name _;
+    server_name _;
 
-	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
-	}
-
-	location ^~/ollama {
-        set $valid_api_key 0;
-        if ($http_x_api_key = "your_api_key_here") {
-            set $valid_api_key 1;
+    location / {
+        if ($http_authorization !~* "^Bearer\s+your_api_key_here$") {
+            return 403 '{"error": "Forbidden: Invalid API Key"}';
         }
-
-        if ($valid_api_key = 0) {
-            return 403 "Forbidden: Invalid API Key";
-        }
-
-        # ollama port
         proxy_pass http://127.0.0.1:11434/;
     }
 }
